@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plb
 import random
+import csv
 
 from test import arr
 from test2 import arr1
@@ -25,3 +26,11 @@ bins = plb.hist(t,14,normed=True)
 plb.grid(axis='x',alpha=1)
 plb.grid(axis='y',alpha=1)
 plb.show()
+
+with open('points.csv', 'w') as csvfile:
+    fieldnames = ['points']
+    writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+    writer.writeheader()
+    for i in t:
+        writer.writerow({'points':i})
+
